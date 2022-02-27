@@ -22,6 +22,7 @@ public abstract class BaseActivity<P extends BasePresenter<? extends BaseView>> 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
+        setContentView(getLayoutId());
         presenter = createPresenter();
         initView();
         initData();
@@ -126,6 +127,8 @@ public abstract class BaseActivity<P extends BasePresenter<? extends BaseView>> 
     public void showError(String msg) {
         showToast(msg);
     }
+
+    protected abstract int getLayoutId();
 
     public abstract void initData();
 

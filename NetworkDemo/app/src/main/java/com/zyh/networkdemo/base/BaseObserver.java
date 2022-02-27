@@ -4,6 +4,7 @@ import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.io.InterruptedIOException;
@@ -45,14 +46,14 @@ public abstract class BaseObserver<T> extends DisposableObserver<T> {
     }
 
     @Override
-    public void onNext(T o) {
+    public void onNext(@NotNull T o) {
         try {
             int code;
             String message = "";
             if (o instanceof BaseModel) {
                 BaseModel<?> model = (BaseModel<?>) o;
                 code = model.getCode();
-                message = model.getMessage();
+                message = model.getDesc();
             } else if (o instanceof BaseListModel) {
                 BaseListModel<?> model = (BaseListModel<?>) o;
                 code = model.getCode();
@@ -74,7 +75,7 @@ public abstract class BaseObserver<T> extends DisposableObserver<T> {
     }
 
     @Override
-    public void onError(Throwable e) {
+    public void onError( Throwable e) {
         if (view != null){
             view.hideLoading();
         }

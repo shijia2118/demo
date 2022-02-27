@@ -18,7 +18,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         BaseObserver<BaseModel<LoginBean>> baseObserver = new BaseObserver<BaseModel<LoginBean>>(loginView) {
             @Override
             public void onSuccess(BaseModel<LoginBean> o) {
-                loginView.onLoginSuccess();
+                loginView.onLoginSuccess(o.getData());
             }
 
             @Override
@@ -26,5 +26,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 loginView.onLoginFailed();
             }
         };
+        addDisposable(apiServer.userLogin(map),baseObserver);
     }
 }
