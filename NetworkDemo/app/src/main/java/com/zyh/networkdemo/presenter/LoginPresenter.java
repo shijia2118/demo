@@ -26,6 +26,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 loginView.onLoginFailed();
             }
         };
-        addDisposable(apiServer.userLogin(map),baseObserver);
+        addDisposable(apiService.userLogin(map),baseObserver);
     }
 }

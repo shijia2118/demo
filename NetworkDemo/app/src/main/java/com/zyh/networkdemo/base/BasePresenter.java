@@ -1,7 +1,7 @@
 package com.zyh.networkdemo.base;
 
 import com.zyh.networkdemo.api.ApiRetrofit;
-import com.zyh.networkdemo.api.ApiServer;
+import com.zyh.networkdemo.api.ApiService;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -16,7 +16,7 @@ public class BasePresenter<V extends BaseView> {
 
     public V baseView;
 
-    protected ApiServer apiServer = ApiRetrofit.getInstance().getApiServer();
+    protected ApiService apiService = ApiRetrofit.getInstance().getApiService();
 
     public BasePresenter(V baseView) {
         this.baseView = baseView;

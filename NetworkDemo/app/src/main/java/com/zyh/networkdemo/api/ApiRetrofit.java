@@ -1,6 +1,6 @@
 package com.zyh.networkdemo.api;
 
-import static com.zyh.networkdemo.api.ApiServer.BASE_HOST;
+import static com.zyh.networkdemo.api.ApiService.BASE_HOST;
 
 import android.util.Log;
 
@@ -17,7 +17,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiRetrofit {
 
-    private final ApiServer apiServer;
+    private final ApiService apiService;
     private static ApiRetrofit apiRetrofit;
     private static final String TAG = "ApiRetrofit";
 
@@ -52,7 +52,7 @@ public class ApiRetrofit {
                 .client(client) //绑定OkHttpClient
                 .build();
 
-        apiServer = retrofit.create(ApiServer.class); //创建api实例
+        apiService = retrofit.create(ApiService.class); //创建api实例
     }
 
     //双重检查，实现单例
@@ -68,7 +68,7 @@ public class ApiRetrofit {
         return apiRetrofit;
     }
 
-    public ApiServer getApiServer(){ return apiServer; }
+    public ApiService getApiService(){ return apiService; }
 
 }
 
